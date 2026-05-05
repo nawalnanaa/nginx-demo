@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-patient
+  namespace: ms-patient
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ms-patient
+  template:
+    metadata:
+      labels:
+        app: ms-patient
+    spec:
+      containers:
+      - name: ms-patient-container
+        image: redis:7.0.15-alpine
+        ports:
+        - containerPort: 8081
